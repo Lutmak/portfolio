@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Emir Bernal | AI/ML Engineer</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
@@ -18,18 +18,27 @@
         <div class="twinkling"></div>
     </div>
 
-    <nav>
+    <nav class="nav-container">
         <div class="stars"></div>
         <div class="twinkling"></div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#certs">Certifications</a>
+        <div class="nav-content">
+            <button class="mobile-menu-btn">
+                <i class="bx bx-menu">
+
+                </i>
+            </button>
+            <div class="nav-links">
+                <div class="stars"></div>
+                <div class="twinkling"></div>
+                <a href="#home" style="--i:0">Home</a>
+                <a href="#about" style="--i:1">About</a>
+                <a href="#experience" style="--i:2">Experience</a>
+                <a href="#skills" style="--i:3">Skills</a>
+                <a href="#projects" style="--i:4">Projects</a>
+                <a href="#certs" style="--i:5">Certifications</a>
+            </div>
+            <button class="hire-me-btn">Hire me ✨🚀</button>
         </div>
-        <button class="hire-me-btn"> Hire me ✨🚀</button>
     </nav>
 
     <section id="home" class="hero">

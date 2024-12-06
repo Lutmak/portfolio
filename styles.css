@@ -1,7 +1,7 @@
 /* Variables */
 :root {
     /* Colors */
-    --cyan: #00fff2;
+    --cyan: #00ffff;
     --pink: #ff00ff;
     --dark: #0a0a0a;
     --light: #f0f0f0;
@@ -27,6 +27,8 @@ body {
     color: var(--text);
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
@@ -72,10 +74,67 @@ nav {
     align-items: center;
 }
 
+/* Navigation Styles */
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.nav-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 95%;
+}
 
 .nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--gradient-horizontal);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1001;
 }
 
 nav a {
@@ -114,15 +173,20 @@ nav a:hover::after {
 /* Hero Section */
 .hero {
     min-height: 100vh;
-    padding: 6rem 2rem 2rem;
+    padding-top: calc(4rem + 60px);
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .hero-content {
-    max-width: 1400px;
-    width: 100%;
+    max-width: 1200px;
+    width: 90%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -130,33 +194,12 @@ nav a:hover::after {
     align-items: center;
 }
 
-/* Profile Image */
 .hero-image {
     position: relative;
-    width: 400px;
-    height: 400px;
-}
-
-.profile-orbit {
-    position: absolute;
-    inset: -20px;
-    border: 2px solid var(--cyan);
-    border-radius: 50%;
-    animation: orbit 20s linear infinite;
-}
-
-/* Planet needs to be positioned relative to hero-image, not the orbit */
-.profile-planet {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: var(--pink);
-    border-radius: 50%;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 20px var(--pink);
-    z-index: 1;
+    width: min(400px, 90vw);
+    height: auto;
+    aspect-ratio: 1/1;
+    margin: 0 auto;
 }
 
 .hero-image img {
@@ -165,6 +208,57 @@ nav a:hover::after {
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--bg);
+}
+
+/* Profile Orbit Animation */
+.profile-orbit {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    animation: orbit 20s linear infinite;
+    overflow: visible;
+}
+
+.profile-orbit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--pink), var(--cyan));
+    background-size: 200% 100%;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: gradientMove 4s linear infinite;
+}
+
+.profile-planet {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    overflow: hidden;
+    transition: transform 0.2s ease-out;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 @keyframes orbit {
@@ -177,9 +271,9 @@ nav a:hover::after {
     }
 }
 
-/* Text Styles */
+/* Typography Responsiveness */
 .hero-text h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 1rem;
 }
 
@@ -192,7 +286,7 @@ nav a:hover::after {
 
 /* Section Headers */
 .section-title {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     margin-bottom: 2rem;
     text-align: center;
     width: fit-content;
@@ -215,8 +309,9 @@ h2 {
 
 /* Typing Animation */
 .typing-container {
-    font-size: 1.5rem;
-    height: 2.5rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    height: auto;
+    min-height: 2.5rem;
     margin: 1rem 0;
     display: flex;
     align-items: center;
@@ -228,13 +323,11 @@ h2 {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    border-right: 3px solid var(--cyan);
+    border-right: 3px solid;
+    border-image: linear-gradient(to top, var(--cyan), var(--pink)) 1;
     padding-right: 5px;
     min-width: 1ch;
     white-space: nowrap;
-    animation: blink 0.7s step-end infinite;
-    border-right: 3px solid;
-    border-image: linear-gradient(to top, var(--cyan), var(--pink)) 1;
     animation: blink 0.7s step-end infinite;
 }
 
@@ -242,12 +335,12 @@ h2 {
 
 /* Hire Me Button */
 .hire-me-btn {
-    position: absolute;
+    position: fixed;
+    top: 1rem;
     right: 2rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     font-size: 1rem;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     border: none;
     border-radius: 50px;
     background: var(--gradient);
@@ -255,7 +348,7 @@ h2 {
     cursor: pointer;
     transition: all 0.3s ease;
     overflow: hidden;
-    z-index: 1;
+    z-index: 1002;
 }
 
 .hire-me-btn::before {
@@ -271,13 +364,13 @@ h2 {
     transition: opacity 0.3s ease;
 }
 
-.hire-me-btn:hover::before {
-    opacity: 1;
-}
-
 .hire-me-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 255, 242, 0.3);
+}
+
+.hire-me-btn:hover::before {
+    opacity: 1;
 }
 
 
@@ -285,12 +378,11 @@ h2 {
 .optimization-quote {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1rem;
-    margin-top: 5rem;
+    margin: 3rem auto;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 95%;
+    padding: 0 1rem;
 }
 
 blockquote {
@@ -299,23 +391,21 @@ blockquote {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-style: italic;
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
     text-align: center;
     margin: 0;
     flex: 1;
-    white-space: nowrap;
-    /* Prevents wrapping */
+    white-space: normal;
 }
 
 .bx-bulb {
     font-size: 2.5rem;
     background: linear-gradient(90deg, #00E5FF, #BD00FF);
-    background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradientSpin 2s linear infinite;
-    flex-shrink: 0;
+    order: -1;
 }
 
 @keyframes gradientSpin {
@@ -335,16 +425,29 @@ blockquote {
 /* Cards Styling */
 .experience-container {
     display: grid;
-    gap: 2rem;
+    gap: clamp(1rem, 3vw, 2rem);
+    width: 100%;
+}
+
+/* Card Improvements */
+.job-card,
+.skill-card,
+.project-card,
+.cert-card {
+    width: 100%;
+    max-width: 100%;
+    /* Prevent overflow */
+    margin: 0 auto;
 }
 
 .job-card {
     background: var(--card-bg);
-    padding: 1.5rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
     border-radius: 15px;
     border-left: 4px solid;
     border-image: var(--gradient) 1;
     transition: transform 0.3s ease;
+    width: 100%;
 }
 
 .job-card:hover {
@@ -405,14 +508,18 @@ blockquote {
 .certs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: clamp(1rem, 3vw, 2rem);
+    width: 100%;
+    padding: 0.5rem;
 }
 
 /* Social Links */
 .social-links {
     display: flex;
-    gap: 2rem;
+    gap: clamp(1rem, 3vw, 2rem);
     margin-top: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .social-links a {
@@ -420,7 +527,7 @@ blockquote {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     transition: transform 0.3s ease;
 }
 
@@ -430,10 +537,11 @@ blockquote {
 
 /* Sections */
 section {
-    padding: 5rem 2rem;
+    padding: clamp(2rem, 5vw, 5rem) 1rem;
     max-width: 1400px;
-    width: 100%;
+    width: 95%;
     margin: 2rem auto;
+    overflow-x: hidden;
 }
 
 /* Footer */
@@ -491,37 +599,219 @@ footer {
     }
 }
 
-/* Responsive Design */
+/* Media Queries */
 @media (max-width: 1200px) {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
-    }
-
-    .hero-image {
-        margin: 0 auto;
+        gap: 2rem;
     }
 }
 
+/* Mobile Navigation Styles */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-150%);
+        width: 90%;
+        background: transparent;
+        padding: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 1.25rem;
+        opacity: 0;
+        visibility: hidden;
+        border-radius: 20px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .nav-links.active {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        visibility: visible;
+        background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow:
+            0 4px 24px -1px rgba(0, 0, 0, 0.2),
+            0 0 16px -2px rgba(0, 0, 0, 0.1);
+        animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.5s ease;
+        transition-delay: calc(var(--i) * 0.1s);
+        padding: 0.75rem 2rem;
+        border-radius: 12px;
+        width: 80%;
+        text-align: center;
+        position: relative;
+        background: linear-gradient(90deg, var(--cyan), var(--pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .nav-links.active a {
+        opacity: 1;
+        transform: translateY(0);
+        animation: linkFadeIn 0.8s calc(var(--i) * 0.1s + 0.3s) forwards;
+    }
+
+    .nav-links a::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, var(--cyan), var(--pink));
+        opacity: 0;
+        border-radius: 12px;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+
+    .nav-links.active a:hover {
+        color: var(--dark);
+        transform: translateY(-2px);
+    }
+
+    .nav-links.active a:hover::before {
+        opacity: 1;
+    }
+
+    /* Line animation at the bottom */
+    .nav-links.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--cyan), var(--pink), var(--cyan));
+        background-size: 200% 100%;
+        animation:
+            gradientLine 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+            gradientMove 2s linear infinite;
+    }
+
+    @keyframes slideDown {
+        0% {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    }
+
+    @keyframes linkFadeIn {
+        0% {
+            background: linear-gradient(90deg, var(--cyan), var(--pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transform: scale(0.95);
+        }
+
+        100% {
+            background: none;
+            color: var(--light);
+            transform: scale(1);
+        }
+    }
+
+    @keyframes gradientLine {
+        0% {
+            transform: scaleX(0);
+            transform-origin: center;
+        }
+
+        100% {
+            transform: scaleX(1);
+        }
+    }
+
+    @keyframes gradientMove {
+        0% {
+            background-position: 200% 0;
+        }
+
+        100% {
+            background-position: -200% 0;
+        }
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        margin-right: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .hire-me-btn {
+        top: 0.75rem;
+        right: 1rem;
+        padding: 0.4rem 1rem;
+        scale: 0.9;
     }
 
     .hero-image {
-        width: 300px;
-        height: 300px;
+        width: min(300px, 80vw);
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0.75rem;
     }
 
-    h1 {
-        font-size: 2.5rem !important;
+    .nav-links a {
+        padding: 0.25rem;
+        font-size: 0.9rem;
     }
 
-    section {
-        padding: 3rem 1rem;
+    /* Hire Me Button */
+    .hire-me-btn {
+        padding: 0.4rem 0.8rem;
+        scale: 0.85;
     }
 
-    .typing-container {
-        font-size: 1.2rem;
+    .hire-me-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--pink), var(--cyan));
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.3s ease;
+    }
+
+    .hire-me-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 255, 242, 0.3);
+    }
+
+    .hire-me-btn:hover::before {
+        opacity: 1;
+    }
+
+    .hero {
+        padding-top: calc(3rem + 60px);
     }
 }
