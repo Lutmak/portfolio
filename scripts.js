@@ -108,8 +108,9 @@ function setupHireMeButton() {
     const hireBtn = document.querySelector('.hire-me-btn');
     if (hireBtn) {
         hireBtn.addEventListener('click', () => {
-            window.location.href = 'mailto:emir.cardenasbernal@gmail.com?subject=Let%27s%20Work%20Together!&body=Hi%20Emir,%20I%20would%20like%20to%20talk%20to%20you%20about%20an%20opportunity!';
+            window.location.href = 'mailto:emir.cardenasbernal@gmail.com?subject=Let%27s%20Work%20Together!&body=Hi%2C%20Emir!%0A%0AI%27d%20love%20to%20talk%20to%20you%20about%20an%20exciting%20opportunity!%20%F0%9F%9A%80%0A%0A*Your%20awesome%20description%20here%3A%0A%0Aposition%3A%20Legendary%20Neural%20Network%20Quantum%20AI%20Master%20%F0%9F%A7%99%E2%80%8D%E2%99%82%EF%B8%8F%0A%0Asalary%3A%20a%20bazillion-gazillion%20dollars%2Fmillisecond%20%F0%9F%92%B0*';
         });
+
     }
 }
 
