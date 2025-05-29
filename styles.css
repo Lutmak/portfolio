@@ -505,11 +505,25 @@ blockquote {
 .skills-grid,
 .projects-grid,
 .certs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: clamp(1rem, 3vw, 2rem);
     width: 100%;
     padding: 0.5rem;
+}
+
+.skill-card,
+.project-card,
+.cert-card {
+    flex: 1 1 250px;
+    max-width: 350px;
+    min-width: 250px;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
 /* Social Links */
