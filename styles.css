@@ -443,19 +443,70 @@ blockquote {
     background: var(--card-bg);
     padding: clamp(1rem, 3vw, 1.5rem);
     border-radius: 15px;
-    border-left: 4px solid;
-    border-image: var(--gradient) 1;
-    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
     width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 3px;
+    width: 3px;
+    height: 0;
+    background: var(--gradient);
+    transition: height 0.2s ease;
+    z-index: 1;
+    border-radius: 15px;
+}
+
+.job-card::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--pink), var(--cyan));
+    transition: width 0.2s ease 0.2s;
+    z-index: 1;
+    border-radius: 15px;
 }
 
 .job-card:hover {
     transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+    border-color: transparent;
+}
+
+.job-card:hover::before {
+    height: 100%;
+}
+
+.job-card:hover::after {
+    width: 100%;
+}
+
+.job-card:not(:hover)::before {
+    height: 0;
+    transition: height 0.1s ease 0.1s;
+}
+
+.job-card:not(:hover)::after {
+    width: 0;
+    transition: width 0.1s ease;
 }
 
 .date {
-    color: var(--cyan);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .skill-card,
