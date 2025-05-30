@@ -1,0 +1,78 @@
+.hero {
+    min-height: 100vh;
+    padding-bottom: var(--space-lg);
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.hero-content {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-2xl);
+    align-items: center;
+}
+
+.hero-image {
+    position: relative;
+    width: min(400px, 90vw);
+    height: auto;
+    aspect-ratio: 1/1;
+    margin: 0 auto;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-bg);
+}
+
+/* Profile Orbit Animation */
+.profile-orbit {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    animation: orbit 20s linear infinite;
+    overflow: visible;
+}
+
+.profile-orbit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(90deg, var(--color-cyan), var(--color-pink), var(--color-cyan));
+    background-size: 200% 100%;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: gradientMove 4s linear infinite;
+}
+
+.profile-planet {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    overflow: hidden;
+    transition: transform var(--transition-fast);
+}

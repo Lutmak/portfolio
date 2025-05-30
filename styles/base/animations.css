@@ -1,0 +1,96 @@
+@keyframes blink {
+
+    0%,
+    100% {
+        border-right: 3px solid transparent;
+    }
+
+    50% {
+        border-right: 3px solid;
+        border-image: linear-gradient(to top, var(--color-cyan), var(--color-pink)) 1;
+    }
+}
+
+@keyframes orbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes gradientSpin {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes move-twink-back {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -10000px 5000px;
+    }
+}
+
+/* Mobile Menu Animations */
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes linkFadeIn {
+    0% {
+        background: linear-gradient(90deg, var(--color-cyan), var(--color-pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        transform: scale(0.95);
+    }
+
+    100% {
+        background: none;
+        color: var(--color-light);
+        transform: scale(1);
+    }
+}
+
+@keyframes gradientLine {
+    0% {
+        transform: scaleX(0);
+        transform-origin: center;
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}

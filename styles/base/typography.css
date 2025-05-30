@@ -1,0 +1,96 @@
+h1 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-sm);
+}
+
+h2 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-xs);
+}
+
+p {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-sm);
+}
+
+/* Text Utilities */
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-title {
+    background: var(--gradient-horizontal);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Typing Animation Component */
+.typing-container {
+    font-size: var(--font-size-lg);
+    height: auto;
+    min-height: 2.5rem;
+    margin: var(--space-sm) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.typing {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    border-right: 3px solid;
+    border-image: linear-gradient(to top, var(--color-cyan), var(--color-pink)) 1;
+    padding-right: 5px;
+    min-width: 1ch;
+    white-space: nowrap;
+    animation: blink 0.7s step-end infinite;
+}
+
+/* Quote Component */
+.optimization-quote {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin: var(--space-xl) auto;
+    max-width: 800px;
+    width: 95%;
+    padding: 0 var(--space-sm);
+}
+
+blockquote {
+    background: linear-gradient(90deg, #00E5FF 0%, #BD00FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+    font-size: var(--font-size-lg);
+    text-align: center;
+    margin: 0;
+    flex: 1;
+    white-space: normal;
+}
+
+.bx-bulb {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #00E5FF, #BD00FF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientSpin 2s linear infinite;
+    order: -1;
+}

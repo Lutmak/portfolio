@@ -1,0 +1,123 @@
+@media (max-width: 1200px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: var(--space-sm);
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-150%);
+        width: 90%;
+        background: transparent;
+        padding: var(--space-md);
+        flex-direction: column;
+        align-items: center;
+        transition: all var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 1.25rem;
+        opacity: 0;
+        visibility: hidden;
+        border-radius: var(--radius-lg);
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .nav-links.active {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        visibility: visible;
+        background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--color-glass);
+        box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+        animation: slideDown var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all var(--transition-slow);
+        transition-delay: calc(var(--i) * 0.1s);
+        padding: 0.75rem 2rem;
+        border-radius: var(--radius-sm);
+        width: 80%;
+        text-align: center;
+        background: linear-gradient(90deg, var(--color-cyan), var(--color-pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .nav-links.active a {
+        opacity: 1;
+        transform: translateY(0);
+        animation: linkFadeIn 0.8s calc(var(--i) * 0.1s + 0.3s) forwards;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        margin-right: auto;
+        transition: transform var(--transition-base);
+    }
+
+    .mobile-menu-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .hire-me-btn {
+        top: 0.75rem;
+        right: var(--space-sm);
+        padding: 0.4rem var(--space-sm);
+        scale: 0.9;
+    }
+
+    .hero {
+        padding-top: var(--space-2xl);
+        min-height: 100vh;
+        justify-content: center;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-md);
+        padding-top: 0;
+    }
+
+    .hero-image {
+        width: min(300px, 80vw);
+    }
+
+    .typing-container {
+        justify-content: center;
+        margin: var(--space-xs) 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0.75rem;
+    }
+
+    .hire-me-btn {
+        padding: 0.4rem 0.8rem;
+        scale: 0.85;
+    }
+
+    .hero {
+        padding-top: 3.5rem;
+    }
+
+    .hero-image {
+        width: min(280px, 75vw);
+    }
+}
