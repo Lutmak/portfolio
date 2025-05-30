@@ -1,0 +1,28 @@
+.space-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-background);
+}
+
+.stars,
+.twinkling {
+    position: absolute;
+    display: block;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.stars {
+    background: #000 url('./images/stars.png') repeat top center;
+    z-index: var(--z-background);
+}
+
+.twinkling {
+    background: transparent url('./images/twinkling.png') repeat top center;
+    z-index: var(--z-twinkling);
+    animation: move-twink-back 200s linear infinite;
+}

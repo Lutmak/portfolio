@@ -1,0 +1,134 @@
+/* Base Card Styles */
+.card-base {
+    background: var(--color-card-bg);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-base);
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.card-base:hover {
+    transform: translateY(-5px);
+}
+
+/* Job Cards */
+.job-card {
+    @extend .card-base;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    padding: clamp(var(--space-sm), 3vw, var(--space-md));
+}
+
+.job-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 3px;
+    width: 3px;
+    height: 0;
+    background: var(--gradient-primary);
+    transition: height var(--transition-fast);
+    z-index: 1;
+    border-radius: var(--radius-md);
+}
+
+.job-card::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-pink), var(--color-cyan));
+    transition: width var(--transition-fast) 0.2s;
+    z-index: 1;
+    border-radius: var(--radius-md);
+}
+
+.job-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+    border-color: transparent;
+}
+
+.job-card:hover::before {
+    height: 100%;
+}
+
+.job-card:hover::after {
+    width: 100%;
+}
+
+.date {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
+
+/* Skill, Project, and Cert Cards */
+.skill-card,
+.project-card,
+.cert-card {
+    flex: 1 1 250px;
+    max-width: 350px;
+    min-width: 250px;
+    background: var(--color-card-bg);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    text-align: center;
+    transition: transform var(--transition-base);
+}
+
+.skill-card i,
+.cert-card i {
+    font-size: 2.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: var(--space-sm);
+}
+
+.cert-card a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: var(--space-md);
+    transition: transform var(--transition-base);
+}
+
+.cert-card a:hover {
+    transform: translateY(-5px);
+}
+
+.cert-card img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-bottom: var(--space-sm);
+}
+
+/* Tech Tags */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-sm);
+    justify-content: center;
+}
+
+.tech-tags span {
+    background: var(--gradient-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-sm);
+    color: var(--color-bg);
+}
