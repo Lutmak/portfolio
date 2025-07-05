@@ -7,7 +7,14 @@ section {
 }
 
 /* Grid Layouts */
-.skills-grid,
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(var(--space-sm), 3vw, var(--space-lg));
+    width: 100%;
+    padding: var(--space-xs);
+}
+
 .projects-grid,
 .certs-grid {
     display: flex;
@@ -54,4 +61,29 @@ footer {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--space-sm);
+    }
+    
+    .projects-grid,
+    .certs-grid {
+        gap: var(--space-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 }
