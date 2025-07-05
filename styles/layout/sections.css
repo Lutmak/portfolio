@@ -57,10 +57,26 @@ section {
 footer {
     text-align: center;
     padding: var(--space-lg);
-    background: var(--gradient-primary);
+    background: linear-gradient(90deg, var(--color-cyan), var(--color-pink));
+    background-size: 100%;
     -webkit-background-clip: text;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: transparent;
+    display: inline-block;
+    width: 100%;
+}
+
+footer p {
+    background: linear-gradient(90deg, var(--color-cyan), var(--color-pink));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    margin: 0;
+    font-weight: 500;
 }
 
 /* Responsive Grid Adjustments */
