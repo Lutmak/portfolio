@@ -110,7 +110,8 @@
 }
 
 /* Enhanced Skill Cards with similar animation to experience */
-.skill-card::before {
+.skill-card::before,
+.project-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -123,7 +124,8 @@
     border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
 
-.skill-card::after {
+.skill-card::after,
+.project-card::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -136,17 +138,20 @@
     border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
-.skill-card:hover {
+.skill-card:hover,
+.project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0, 255, 255, 0.15);
     border-color: rgba(0, 255, 255, 0.3);
 }
 
-.skill-card:hover::before {
+.skill-card:hover::before,
+.project-card:hover::before {
     width: 4px;
 }
 
-.skill-card:hover::after {
+.skill-card:hover::after,
+.project-card:hover::after {
     height: 4px;
 }
 
@@ -162,7 +167,10 @@
 }
 
 .skill-card h3,
-.skill-card ul {
+.skill-card ul,
+.project-card h3,
+.project-card p,
+.project-card .tech-tags {
     position: relative;
     z-index: 2;
 }
@@ -173,6 +181,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    font-weight: 700;
 }
 
 /* Enhanced Certification Cards */
