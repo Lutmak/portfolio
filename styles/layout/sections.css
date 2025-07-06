@@ -6,6 +6,18 @@ section {
     overflow-x: hidden;
 }
 
+/* About Section - Clean and Centered */
+#about {
+    text-align: center;
+}
+
+#about p {
+    line-height: 1.7;
+    font-size: var(--font-size-base);
+    max-width: 800px;
+    margin: 0 auto var(--space-lg) auto;
+}
+
 /* Grid Layouts */
 .skills-grid {
     display: grid;
