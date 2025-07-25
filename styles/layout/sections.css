@@ -65,6 +65,24 @@ section {
     transform: translateY(-3px);
 }
 
+/* Appointment Section */
+#appointment {
+    text-align: center;
+}
+
+.appointment-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.appointment-description {
+    font-size: var(--font-size-base);
+    color: var(--color-light);
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+}
+
 /* Footer */
 footer {
     text-align: center;

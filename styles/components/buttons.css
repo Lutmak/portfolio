@@ -1,20 +1,22 @@
-.hire-me-btn {
-    position: fixed;
-    top: var(--space-sm);
-    right: var(--space-lg);
-    padding: var(--space-xs) var(--space-md);
-    font-size: var(--font-size-base);
+.cta-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
+    border: none;
     border-radius: var(--radius-full);
     background: var(--gradient-primary);
     color: white;
     cursor: pointer;
     transition: all var(--transition-base);
     overflow: hidden;
-    z-index: var(--z-tooltip);
+    position: relative;
+    text-decoration: none;
+    font-family: inherit;
+    display: inline-block;
+    text-align: center;
 }
 
-.hire-me-btn::before {
+.cta-btn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -27,11 +29,32 @@
     transition: opacity var(--transition-base);
 }
 
-.hire-me-btn:hover {
+.cta-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 255, 242, 0.3);
 }
 
-.hire-me-btn:hover::before {
+.cta-btn:hover::before {
     opacity: 1;
+}
+
+/* Modifier for fixed positioning (hire me button) */
+.cta-btn--fixed {
+    position: fixed;
+    top: var(--space-sm);
+    right: var(--space-lg);
+    z-index: var(--z-tooltip);
+}
+
+/* Modifier for inline/section buttons */
+.cta-btn--inline {
+    margin: var(--space-lg) auto 0 auto;
+    display: block;
+    width: fit-content;
+}
+
+/* Size modifiers */
+.cta-btn--large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
 }

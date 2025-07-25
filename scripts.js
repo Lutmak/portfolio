@@ -1,9 +1,10 @@
+// Main DOMContentLoaded Event
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Initializing animations and interactions...');
     setupTypingAnimation();
     setupMobileMenu();
     setupSmoothScrolling();
-    setupHireMeButton();
+    setupCTAButtons();
     setupPlanetAnimation();
 });
 
@@ -103,14 +104,36 @@ function setupSmoothScrolling() {
     });
 }
 
-// Hire Me Button
-function setupHireMeButton() {
-    const hireBtn = document.querySelector('.hire-me-btn');
-    if (hireBtn) {
-        hireBtn.addEventListener('click', () => {
-            window.location.href = 'mailto:emir.cardenasbernal+portfolio@gmail.com?subject=Let%27s%20Work%20Together!&body=Hi%2C%20Emir!%0A%0AI%27d%20love%20to%20talk%20to%20you%20about%20an%20exciting%20opportunity%20!%20%0A%0AAwesome%20Company%20name%3A%20that%20definitely%20won%27t%20ask%20me%20to%20invert%20a%20binary%20tree%20or%20implement%20quick%20sort%20from%20memory%20on%20LeetCode%20to%20hire%20me%20%F0%9F%8E%89%0A%0APosition%20details%3A%20Legendary%20Neural%20Network%20Quantum%20AI%20Master%20%F0%9F%A7%99%E2%80%8D%E2%99%82%EF%B8%8F%0A%0ACompensation%3A%20a%20bazillion-gazillion%20dollars%2Fmillisecond%20%F0%9F%92%B0';
-        });
+// Email Configuration - Only for the complex email template
+const EmailConfig = {
+recipient: 'emir.cardenasbernal+portfolio@gmail.com',
+subject: "Let's Work Together!",
+body: `Hi, Emir!
 
+I'd love to talk to you about an exciting opportunity!
+
+Awesome Company name: that definitely won't ask me to invert a binary tree or implement quick sort from memory on LeetCode to hire me 🎉
+
+Position details: Legendary Neural Network Quantum AI Master 🧙‍♂️
+
+Compensation: a bazillion-gazillion dollars/millisecond 💰`
+};
+
+// Email Function - Only needed for the hire me button
+function openEmail() {
+    const params = new URLSearchParams({
+        subject: EmailConfig.subject,
+        body: EmailConfig.body
+    });
+    window.location.href = `mailto:${EmailConfig.recipient}?${params.toString()}`;
+}
+
+// Button Setup - Only for hire me button (appointment button uses inline onclick)
+function setupCTAButtons() {
+    const hireBtn = document.getElementById('hire-btn');
+    
+    if (hireBtn) {
+        hireBtn.addEventListener('click', openEmail);
     }
 }
 
