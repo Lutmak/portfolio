@@ -351,14 +351,15 @@
 
     <section id="appointment">
         <h2 class="section-title">Book an Appointment</h2>
-        
+
         <div class="appointment-content">
             <p class="appointment-description">
-                Ready to discuss your next AI project? Let's schedule a call to explore how we can work together to bring your vision to life.
+                Ready to discuss your next AI project? Let's schedule a call to explore how we can work together to
+                bring your vision to life.
             </p>
-            
-            <button class="cta-btn cta-btn--inline cta-btn--large" 
-                    onclick="window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ2hU_DwosC6pKuOAXzt8rXnGJKo9nTUwggshRYG2-YewEAdTLwEfQWQxS7IAdv-rl_Ff32EdeXl?gv=true', '_blank', 'noopener,noreferrer')">
+
+            <button class="cta-btn cta-btn--inline cta-btn--large"
+                onclick="window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ2hU_DwosC6pKuOAXzt8rXnGJKo9nTUwggshRYG2-YewEAdTLwEfQWQxS7IAdv-rl_Ff32EdeXl?gv=true', '_blank', 'noopener,noreferrer')">
                 Book a Call ✨📅
             </button>
         </div>
@@ -367,9 +368,22 @@
     <footer>
         <p>© 2025 Emir Bernal</p>
     </footer>
+    <!-- SellMeABit Chat Bubble - Matches your portfolio aesthetic -->
+    <div id="sellmeabit-chat" class="chat-bubble-container">
+        <!-- Toggle Button -->
+        <button id="chat-toggle" class="chat-toggle-btn">
+            <i class='bx bx-message-dots'></i>
+        </button>
 
+        <!-- Chat Frame (hidden by default) -->
+        <div id="chat-frame" class="chat-frame hidden">
+            <iframe src="http://localhost:8501" width="100%" height="100%" frameborder="0">
+            </iframe>
+        </div>
+    </div>
     <script src="scripts.js"></script>
     <script data-goatcounter="https://emirwork.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
 </body>
 
 </html>

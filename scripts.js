@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupMobileMenu();
     setupSmoothScrolling();
     setupCTAButtons();
+    setupChatWidget();
     setupPlanetAnimation();
 });
 
@@ -135,6 +136,45 @@ function setupCTAButtons() {
     if (hireBtn) {
         hireBtn.addEventListener('click', openEmail);
     }
+}
+
+// Chat Widget
+function setupChatWidget() {
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatFrame = document.getElementById('chat-frame');
+    
+    if (!chatToggle || !chatFrame) {
+        console.log('Chat elements not found');
+        return;
+    }
+    
+    let isOpen = false;
+
+    chatToggle.addEventListener('click', function() {
+        isOpen = !isOpen;
+        
+        if (isOpen) {
+            chatFrame.classList.remove('hidden');
+            // Small delay for transition
+            setTimeout(() => chatFrame.classList.add('active'), 10);
+        } else {
+            chatFrame.classList.remove('active');
+            setTimeout(() => chatFrame.classList.add('hidden'), 300);
+        }
+
+        // Rotate icon
+        const icon = chatToggle.querySelector('i');
+        if (icon) {
+            icon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    });
+
+    // Close when clicking outside (optional)
+    document.addEventListener('click', function(e) {
+        if (!chatToggle.contains(e.target) && !chatFrame.contains(e.target) && isOpen) {
+            chatToggle.click();
+        }
+    });
 }
 
 // Planet Animation
